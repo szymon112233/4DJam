@@ -22,24 +22,44 @@ public class PlayerController : MonoBehaviour
     private bool run;
     private bool NearEnterableCar;
     private bool InCar;
+    private bool InDonorPoint;
+
+    private CarController nearCar;
+    private CarController controlledCar;
     
     // Start is called before the first frame update
     void Awake()
     {
         InputActions = new InputActions();
         InputActions.Enable();
+        InputActions.Car.Disable();
+        InputActions.Menu.Disable();
         InputActions.Character.Sprint.started += OnSprintPressed;
         InputActions.Character.Sprint.canceled += OnSprintCanceled;
         InputActions.Character.EnterCar.performed += OnEnterCar;
+        InputActions.Car.ExitCar.performed += OnExitCar;
+        InputActions.Character.Interact.performed += OnInteract;
     }
 
-    private void OnEnterCar(InputAction.CallbackContext obj)
+    private void OnExitCar(InputAction.CallbackContext obj)
     {
         if (InCar)
         {
             ExitCar();
         }
-        else if (NearEnterableCar)
+    }
+
+    private void OnInteract(InputAction.CallbackContext obj)
+    {
+        if (InDonorPoint)
+        {
+            GameManager.Instance.TransferBlood(10);
+        }
+    }
+
+    private void OnEnterCar(InputAction.CallbackContext obj)
+    {
+        if (NearEnterableCar)
         {
             EnterCar();
         }
@@ -102,30 +122,63 @@ public class PlayerController : MonoBehaviour
     void EnterCar()
     {
         InCar = true;
+        InputActions.Character.Disable();
+        InputActions.Car.Enable();
+        controlledCar = nearCar;
+        controlledCar.Posses(InputActions);
+        ToggleShowPlayer(false);
+        GameManager.Instance.SwitchCameraFollow(controlledCar.transform);
     }
 
     void ExitCar()
     {
         InCar = false;
+        InputActions.Car.Disable();
+        InputActions.Character.Enable();
+        controlledCar.UnPosses();
+        TeleportPlayer(controlledCar.ExitTransform);
+        ToggleShowPlayer(true);
+        controlledCar = null;
+        GameManager.Instance.SwitchCameraFollow(transform);
     }
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.GetComponentInParent<CarController>())
+        if (other.GetComponentInParent<CarController>())
         {
-            return;
+            NearEnterableCar = true;
+            nearCar = other.GetComponentInParent<CarController>();
+        }
+        else if (!other.GetComponent<BloodDonor>())
+        {
+            InDonorPoint = true;
         }
 
-        NearEnterableCar = true;
+        
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         if (!other.GetComponentInParent<CarController>())
         {
-            return;
+            NearEnterableCar = false;
+            nearCar = null;
         }
+        else if (!other.GetComponent<BloodDonor>())
+        {
+            InDonorPoint = false;
+        }
+    }
 
-        NearEnterableCar = false;
+    void ToggleShowPlayer(bool show)
+    {
+        GetComponent<Collider2D>().enabled = show;
+        GetComponentInChildren<SpriteRenderer>().enabled = show;
+    }
+
+    void TeleportPlayer(Transform teleportTransform)
+    {
+        rigidbody2D.position = teleportTransform.position;
+        rigidbody2D.SetRotation(teleportTransform.rotation);
     }
 }

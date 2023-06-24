@@ -62,6 +62,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ef5e496-47bf-4617-a26d-f308d5fdbf52"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""EnterCar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bfe345c2-10be-4854-9579-d34a7b3d3def"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""865c5be8-ec4f-4cdb-a9ff-00a9cc706b15"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -186,8 +217,134 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             ""name"": ""Car"",
             ""id"": ""274ab0a8-be3e-4bb9-b22c-7c72d2c8b057"",
-            ""actions"": [],
-            ""bindings"": []
+            ""actions"": [
+                {
+                    ""name"": ""Accelrate"",
+                    ""type"": ""Value"",
+                    ""id"": ""ea45e437-9714-40f0-9909-c4f89021c2ec"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Break"",
+                    ""type"": ""Button"",
+                    ""id"": ""6227c265-2657-414a-917a-315fc0136712"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Turn"",
+                    ""type"": ""Value"",
+                    ""id"": ""9c061a94-17b6-4345-9a1f-4f5a5f4494a2"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ExitCar"",
+                    ""type"": ""Button"",
+                    ""id"": ""8786d975-bd55-4f31-a97b-fd8c04db71e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""0e29a33c-9fe7-41a3-89df-5e7b2e04e9ab"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Break"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Keyboard"",
+                    ""id"": ""2232b6f3-5f8b-411c-b64d-e4a9302bdf1a"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelrate"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""8c04ef24-ef58-4a53-bda7-b9d2a7ae9962"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelrate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""55cd0ae6-e409-4922-ad46-683ac368d942"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Accelrate"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""keyboard"",
+                    ""id"": ""a249cbf5-2747-4afe-83e6-9d8d33d28180"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""552da3ee-24f6-4dbb-9635-217f3326d7f8"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""b7b31269-ec62-4d85-a67d-35f9d45c1202"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Turn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2430b9ab-7c83-48d0-a52d-f483f3f96ed3"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ExitCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -204,10 +361,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Character_Sprint = m_Character.FindAction("Sprint", throwIfNotFound: true);
         m_Character_LookMousePos = m_Character.FindAction("LookMousePos", throwIfNotFound: true);
         m_Character_EnterCar = m_Character.FindAction("EnterCar", throwIfNotFound: true);
+        m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
+        m_Car_Accelrate = m_Car.FindAction("Accelrate", throwIfNotFound: true);
+        m_Car_Break = m_Car.FindAction("Break", throwIfNotFound: true);
+        m_Car_Turn = m_Car.FindAction("Turn", throwIfNotFound: true);
+        m_Car_ExitCar = m_Car.FindAction("ExitCar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +435,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_Sprint;
     private readonly InputAction m_Character_LookMousePos;
     private readonly InputAction m_Character_EnterCar;
+    private readonly InputAction m_Character_Interact;
     public struct CharacterActions
     {
         private @InputActions m_Wrapper;
@@ -281,6 +444,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Sprint => m_Wrapper.m_Character_Sprint;
         public InputAction @LookMousePos => m_Wrapper.m_Character_LookMousePos;
         public InputAction @EnterCar => m_Wrapper.m_Character_EnterCar;
+        public InputAction @Interact => m_Wrapper.m_Character_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -302,6 +466,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @EnterCar.started += instance.OnEnterCar;
             @EnterCar.performed += instance.OnEnterCar;
             @EnterCar.canceled += instance.OnEnterCar;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(ICharacterActions instance)
@@ -318,6 +485,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @EnterCar.started -= instance.OnEnterCar;
             @EnterCar.performed -= instance.OnEnterCar;
             @EnterCar.canceled -= instance.OnEnterCar;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(ICharacterActions instance)
@@ -377,10 +547,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Car
     private readonly InputActionMap m_Car;
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
+    private readonly InputAction m_Car_Accelrate;
+    private readonly InputAction m_Car_Break;
+    private readonly InputAction m_Car_Turn;
+    private readonly InputAction m_Car_ExitCar;
     public struct CarActions
     {
         private @InputActions m_Wrapper;
         public CarActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Accelrate => m_Wrapper.m_Car_Accelrate;
+        public InputAction @Break => m_Wrapper.m_Car_Break;
+        public InputAction @Turn => m_Wrapper.m_Car_Turn;
+        public InputAction @ExitCar => m_Wrapper.m_Car_ExitCar;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -390,10 +568,34 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CarActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CarActionsCallbackInterfaces.Add(instance);
+            @Accelrate.started += instance.OnAccelrate;
+            @Accelrate.performed += instance.OnAccelrate;
+            @Accelrate.canceled += instance.OnAccelrate;
+            @Break.started += instance.OnBreak;
+            @Break.performed += instance.OnBreak;
+            @Break.canceled += instance.OnBreak;
+            @Turn.started += instance.OnTurn;
+            @Turn.performed += instance.OnTurn;
+            @Turn.canceled += instance.OnTurn;
+            @ExitCar.started += instance.OnExitCar;
+            @ExitCar.performed += instance.OnExitCar;
+            @ExitCar.canceled += instance.OnExitCar;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
         {
+            @Accelrate.started -= instance.OnAccelrate;
+            @Accelrate.performed -= instance.OnAccelrate;
+            @Accelrate.canceled -= instance.OnAccelrate;
+            @Break.started -= instance.OnBreak;
+            @Break.performed -= instance.OnBreak;
+            @Break.canceled -= instance.OnBreak;
+            @Turn.started -= instance.OnTurn;
+            @Turn.performed -= instance.OnTurn;
+            @Turn.canceled -= instance.OnTurn;
+            @ExitCar.started -= instance.OnExitCar;
+            @ExitCar.performed -= instance.OnExitCar;
+            @ExitCar.canceled -= instance.OnExitCar;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -426,11 +628,16 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnSprint(InputAction.CallbackContext context);
         void OnLookMousePos(InputAction.CallbackContext context);
         void OnEnterCar(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {
     }
     public interface ICarActions
     {
+        void OnAccelrate(InputAction.CallbackContext context);
+        void OnBreak(InputAction.CallbackContext context);
+        void OnTurn(InputAction.CallbackContext context);
+        void OnExitCar(InputAction.CallbackContext context);
     }
 }

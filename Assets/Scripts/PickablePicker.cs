@@ -12,7 +12,7 @@ public class PickablePicker : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.Points += pickable.Points;
+        GameManager.Instance.BloodOnCharacter += pickable.Points;
         
         Destroy(other.gameObject);
     }

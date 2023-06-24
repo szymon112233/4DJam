@@ -6,8 +6,10 @@ public enum controlMode
 	KeyBoard,Touch
 }
 
-public class CarController : MonoBehaviour 
+public class CarController : MonoBehaviour
 {
+
+	public Transform ExitTransform;
 
 	public controlMode CarControlMode;
 
@@ -23,54 +25,73 @@ public class CarController : MonoBehaviour
 	bool TouchAccel,TouchBack,TouchBreaks;
 	bool SteerLeft, SteerRight;
 
+	private InputActions InputController;
+	private bool possesed;
+	
+
 	void Start () 
 	{
 	
 	}
 
+	public void Posses(InputActions controller)
+	{
+		InputController = controller;
+		possesed = true;
+	}
+
+	public void UnPosses()
+	{
+		InputController = null;
+		possesed = false;
+	}
+
 	void FixedUpdate () 
 	{
-		if (CarControlMode == controlMode.KeyBoard) 
+		if (possesed)
 		{
-			if (Input.GetKey (KeyCode.UpArrow))
-				Accel (1);													//Accelerate in forward direction
-			else if (Input.GetKey (KeyCode.DownArrow))
-				Accel (-1);													//Accelerate in backward direction
-			else if (Input.GetKey (KeyCode.Space)) 
+			if (CarControlMode == controlMode.KeyBoard) 
 			{
-				if (AccelFwd)
-					StopAccel (1, Breaks);									//Breaks while in forward direction
-				else if (AccelBwd)
-					StopAccel (-1, Breaks);									//Breaks while in backward direction
-			} 
-			else 
-			{
-				if (AccelFwd)
-					StopAccel (1, 0.1f);									//Applies breaks slowly if no key is pressed while in forward direction
-				else if (AccelBwd)
-					StopAccel (-1, 0.1f);									//Applies breaks slowly if no key is pressed while in backward direction
+				if (InputController.Car.Accelrate.ReadValue<float>() > 0)
+					Accel (1);													//Accelerate in forward direction
+				else if (InputController.Car.Accelrate.ReadValue<float>() < 0)
+					Accel (-1);													//Accelerate in backward direction
+				else if (InputController.Car.Break.IsInProgress()) 
+				{
+					if (AccelFwd)
+						StopAccel (1, Breaks);									//Breaks while in forward direction
+					else if (AccelBwd)
+						StopAccel (-1, Breaks);									//Breaks while in backward direction
+				} 
+				else 
+				{
+					if (AccelFwd)
+						StopAccel (1, 0.1f);									//Applies breaks slowly if no key is pressed while in forward direction
+					else if (AccelBwd)
+						StopAccel (-1, 0.1f);									//Applies breaks slowly if no key is pressed while in backward direction
+				}
 			}
-		}
 
-		if (CarControlMode == controlMode.Touch) 
-		{
-			if (TouchAccel)
-				Accel (1);
-			else if(TouchBack)
-				Accel (-1);
-			else if(TouchBreaks)
+			if (CarControlMode == controlMode.Touch) 
 			{
-				if (AccelFwd)
-					StopAccel (1, Breaks);
-				else if (AccelBwd)
-					StopAccel (-1, Breaks);	
-			}
-			else
-			{
-				if (AccelFwd)
-					StopAccel (1, 0.1f);
-				else if (AccelBwd)
-					StopAccel (-1, 0.1f);
+				if (TouchAccel)
+					Accel (1);
+				else if(TouchBack)
+					Accel (-1);
+				else if(TouchBreaks)
+				{
+					if (AccelFwd)
+						StopAccel (1, Breaks);
+					else if (AccelBwd)
+						StopAccel (-1, Breaks);	
+				}
+				else
+				{
+					if (AccelFwd)
+						StopAccel (1, 0.1f);
+					else if (AccelBwd)
+						StopAccel (-1, 0.1f);
+				}
 			}
 		}
 	}
@@ -113,9 +134,9 @@ public class CarController : MonoBehaviour
 
 			if(CarControlMode == controlMode.KeyBoard)
 			{
-				if (Input.GetKey (KeyCode.LeftArrow))
+				if (IsSteeringLeft())
 					transform.Rotate (Vector3.forward * Steer);				//Steer left
-				if (Input.GetKey (KeyCode.RightArrow))
+				if (IsSteeringRight())
 					transform.Rotate (Vector3.back * Steer);				//steer right
 			}
 			else if(CarControlMode == controlMode.Touch)
@@ -136,9 +157,9 @@ public class CarController : MonoBehaviour
 
 			if(CarControlMode == controlMode.KeyBoard)
 			{
-				if (Input.GetKey (KeyCode.LeftArrow))
+				if (IsSteeringLeft())
 					transform.Rotate (Vector3.back * Steer);				//Steer left (while in reverse direction)
-				if (Input.GetKey (KeyCode.RightArrow))
+				if (IsSteeringRight())
 					transform.Rotate (Vector3.forward * Steer);				//Steer left (while in reverse direction)
 			}
 			else if(CarControlMode == controlMode.Touch)
@@ -169,9 +190,9 @@ public class CarController : MonoBehaviour
 
 				if (CarControlMode == controlMode.KeyBoard) 
 				{
-					if (Input.GetKey (KeyCode.LeftArrow))
+					if (IsSteeringLeft())
 						transform.Rotate (Vector3.forward * Steer);
-					if (Input.GetKey (KeyCode.RightArrow))
+					if (IsSteeringRight())
 						transform.Rotate (Vector3.back * Steer);
 				}
 				else if(CarControlMode == controlMode.Touch)
@@ -193,9 +214,9 @@ public class CarController : MonoBehaviour
 
 				if (CarControlMode == controlMode.KeyBoard) 
 				{
-					if (Input.GetKey (KeyCode.LeftArrow))
+					if (IsSteeringLeft())
 						transform.Rotate (Vector3.back * Steer);
-					if (Input.GetKey (KeyCode.RightArrow))
+					if (IsSteeringRight())
 						transform.Rotate (Vector3.forward * Steer);
 				}
 				else if(CarControlMode == controlMode.Touch)
@@ -214,5 +235,15 @@ public class CarController : MonoBehaviour
 			Steer -= 0.01f;
 
 		transform.Translate (Vector2.up * Acceleration * Time.deltaTime);
+	}
+
+	private bool IsSteeringLeft()
+	{
+		return InputController.Car.Turn.ReadValue<float>() < 0;
+	}
+	
+	private bool IsSteeringRight()
+	{
+		return InputController.Car.Turn.ReadValue<float>() > 0;
 	}
 }
