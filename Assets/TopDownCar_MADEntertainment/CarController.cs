@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal;
 
 public enum controlMode
 {
@@ -10,6 +12,11 @@ public class CarController : MonoBehaviour
 {
 
 	public Transform ExitTransform;
+	public Animation animation;
+	public Light2D FrontLightL;
+	public Light2D FrontLightR;
+	public Light2D BackLightL;
+	public Light2D BackLightR;
 
 	public controlMode CarControlMode;
 
@@ -29,21 +36,43 @@ public class CarController : MonoBehaviour
 	private bool possesed;
 	
 
-	void Start () 
+	void Start ()
 	{
-	
+		FrontLightL.intensity = 0;
+		FrontLightR.intensity = 0;
+		BackLightL.intensity = 0;
+		BackLightR.intensity = 0;
+		
 	}
 
 	public void Posses(InputActions controller)
 	{
 		InputController = controller;
 		possesed = true;
+		InputController.Car.Break.performed += BreakOnperformed;
+		InputController.Car.Break.canceled += BreakOncanceled;
+		animation.Play("StartEngine");
+	}
+
+	private void BreakOncanceled(InputAction.CallbackContext obj)
+	{
+		animation.Stop();
+		BackLightL.intensity = 0;
+		BackLightR.intensity = 0;
+	}
+
+	private void BreakOnperformed(InputAction.CallbackContext obj)
+	{
+		animation.Play("Break");
 	}
 
 	public void UnPosses()
 	{
+		InputController.Car.Break.performed -= BreakOnperformed;
+		InputController.Car.Break.canceled -= BreakOncanceled;
 		InputController = null;
 		possesed = false;
+		animation.Play("StopEngine");
 	}
 
 	void FixedUpdate () 

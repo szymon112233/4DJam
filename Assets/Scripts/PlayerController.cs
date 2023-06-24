@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
             NearEnterableCar = true;
             nearCar = other.GetComponentInParent<CarController>();
         }
-        else if (!other.GetComponent<BloodDonor>())
+        else if (other.GetComponent<BloodDonor>())
         {
             InDonorPoint = true;
         }
@@ -159,12 +159,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.GetComponentInParent<CarController>())
+        if (other.GetComponentInParent<CarController>())
         {
             NearEnterableCar = false;
             nearCar = null;
         }
-        else if (!other.GetComponent<BloodDonor>())
+        else if (other.GetComponent<BloodDonor>())
         {
             InDonorPoint = false;
         }
