@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public int BloodGivenAway;
 
     public float NightTotalDuration;
+    public Vector2 ZoomRange;
+    public AnimationCurve CameraZoomCurve;
+    
     public float TimeLeft;
     public bool DEBUGDISABLETIMER = false;
 
@@ -49,6 +52,12 @@ public class GameManager : MonoBehaviour
     {
         characterVcam.Follow = transform;
     }
+
+    public void UpdateCameraZoom(float NormalizedZoom)
+    {
+        characterVcam.m_Lens.OrthographicSize = Mathf.Lerp(ZoomRange.x, ZoomRange.y, CameraZoomCurve.Evaluate(NormalizedZoom));
+    }
+    
     
     // Start is called before the first frame update
     void Start()

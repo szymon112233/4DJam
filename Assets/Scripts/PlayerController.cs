@@ -24,8 +24,8 @@ public class PlayerController : MonoBehaviour
     private bool InCar;
     private bool InDonorPoint;
 
-    private CarController nearCar;
-    private CarController controlledCar;
+    private TopDownCarController nearCar;
+    private TopDownCarController controlledCar;
     
     // Start is called before the first frame update
     void Awake()
@@ -144,10 +144,10 @@ public class PlayerController : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponentInParent<CarController>())
+        if (other.GetComponentInParent<TopDownCarController>())
         {
             NearEnterableCar = true;
-            nearCar = other.GetComponentInParent<CarController>();
+            nearCar = other.GetComponentInParent<TopDownCarController>();
         }
         else if (other.GetComponent<BloodDonor>())
         {
@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponentInParent<CarController>())
+        if (other.GetComponentInParent<TopDownCarController>())
         {
             NearEnterableCar = false;
             nearCar = null;

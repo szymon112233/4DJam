@@ -197,10 +197,10 @@
             "id": "274ab0a8-be3e-4bb9-b22c-7c72d2c8b057",
             "actions": [
                 {
-                    "name": "Accelrate",
+                    "name": "Steer",
                     "type": "Value",
                     "id": "ea45e437-9714-40f0-9909-c4f89021c2ec",
-                    "expectedControlType": "Axis",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -213,15 +213,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Turn",
-                    "type": "Value",
-                    "id": "9c061a94-17b6-4345-9a1f-4f5a5f4494a2",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
                 },
                 {
                     "name": "ExitCar",
@@ -237,79 +228,13 @@
                 {
                     "name": "",
                     "id": "0e29a33c-9fe7-41a3-89df-5e7b2e04e9ab",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Break",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "Keyboard",
-                    "id": "2232b6f3-5f8b-411c-b64d-e4a9302bdf1a",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accelrate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "8c04ef24-ef58-4a53-bda7-b9d2a7ae9962",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accelrate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "55cd0ae6-e409-4922-ad46-683ac368d942",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Accelrate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "keyboard",
-                    "id": "a249cbf5-2747-4afe-83e6-9d8d33d28180",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "552da3ee-24f6-4dbb-9635-217f3326d7f8",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "b7b31269-ec62-4d85-a67d-35f9d45c1202",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Turn",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -321,6 +246,61 @@
                     "action": "ExitCar",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "2D Vector",
+                    "id": "b5808ee0-14bf-49d1-8098-ad8381a17d17",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "112b10a2-4074-4914-ab5d-3d0c5d1d141a",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "bae9ef71-c1fa-4cfa-853a-15c49edab45c",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "c2b0fc10-c8c9-4514-9fe9-31e4291c2c6c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "9c66d272-4c4e-48dd-9ced-7e32f18f2f46",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steer",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

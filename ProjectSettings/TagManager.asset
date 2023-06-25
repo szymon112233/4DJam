@@ -44,6 +44,9 @@ TagManager:
   - name: Base
     uniqueID: 4121637833
     locked: 0
+  - name: Buildings
+    uniqueID: 2069052777
+    locked: 0
   - name: Decorations
     uniqueID: 2138191547
     locked: 0

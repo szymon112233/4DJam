@@ -219,10 +219,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""274ab0a8-be3e-4bb9-b22c-7c72d2c8b057"",
             ""actions"": [
                 {
-                    ""name"": ""Accelrate"",
+                    ""name"": ""Steer"",
                     ""type"": ""Value"",
                     ""id"": ""ea45e437-9714-40f0-9909-c4f89021c2ec"",
-                    ""expectedControlType"": ""Axis"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -235,15 +235,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Turn"",
-                    ""type"": ""Value"",
-                    ""id"": ""9c061a94-17b6-4345-9a1f-4f5a5f4494a2"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""ExitCar"",
@@ -259,79 +250,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""0e29a33c-9fe7-41a3-89df-5e7b2e04e9ab"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Break"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""Keyboard"",
-                    ""id"": ""2232b6f3-5f8b-411c-b64d-e4a9302bdf1a"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Accelrate"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""8c04ef24-ef58-4a53-bda7-b9d2a7ae9962"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Accelrate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""55cd0ae6-e409-4922-ad46-683ac368d942"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Accelrate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""keyboard"",
-                    ""id"": ""a249cbf5-2747-4afe-83e6-9d8d33d28180"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Turn"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""552da3ee-24f6-4dbb-9635-217f3326d7f8"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Turn"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""b7b31269-ec62-4d85-a67d-35f9d45c1202"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Turn"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -343,6 +268,61 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ExitCar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""b5808ee0-14bf-49d1-8098-ad8381a17d17"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""112b10a2-4074-4914-ab5d-3d0c5d1d141a"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""bae9ef71-c1fa-4cfa-853a-15c49edab45c"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""c2b0fc10-c8c9-4514-9fe9-31e4291c2c6c"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9c66d272-4c4e-48dd-9ced-7e32f18f2f46"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Steer"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -366,9 +346,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         // Car
         m_Car = asset.FindActionMap("Car", throwIfNotFound: true);
-        m_Car_Accelrate = m_Car.FindAction("Accelrate", throwIfNotFound: true);
+        m_Car_Steer = m_Car.FindAction("Steer", throwIfNotFound: true);
         m_Car_Break = m_Car.FindAction("Break", throwIfNotFound: true);
-        m_Car_Turn = m_Car.FindAction("Turn", throwIfNotFound: true);
         m_Car_ExitCar = m_Car.FindAction("ExitCar", throwIfNotFound: true);
     }
 
@@ -547,17 +526,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Car
     private readonly InputActionMap m_Car;
     private List<ICarActions> m_CarActionsCallbackInterfaces = new List<ICarActions>();
-    private readonly InputAction m_Car_Accelrate;
+    private readonly InputAction m_Car_Steer;
     private readonly InputAction m_Car_Break;
-    private readonly InputAction m_Car_Turn;
     private readonly InputAction m_Car_ExitCar;
     public struct CarActions
     {
         private @InputActions m_Wrapper;
         public CarActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Accelrate => m_Wrapper.m_Car_Accelrate;
+        public InputAction @Steer => m_Wrapper.m_Car_Steer;
         public InputAction @Break => m_Wrapper.m_Car_Break;
-        public InputAction @Turn => m_Wrapper.m_Car_Turn;
         public InputAction @ExitCar => m_Wrapper.m_Car_ExitCar;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
@@ -568,15 +545,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_CarActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_CarActionsCallbackInterfaces.Add(instance);
-            @Accelrate.started += instance.OnAccelrate;
-            @Accelrate.performed += instance.OnAccelrate;
-            @Accelrate.canceled += instance.OnAccelrate;
+            @Steer.started += instance.OnSteer;
+            @Steer.performed += instance.OnSteer;
+            @Steer.canceled += instance.OnSteer;
             @Break.started += instance.OnBreak;
             @Break.performed += instance.OnBreak;
             @Break.canceled += instance.OnBreak;
-            @Turn.started += instance.OnTurn;
-            @Turn.performed += instance.OnTurn;
-            @Turn.canceled += instance.OnTurn;
             @ExitCar.started += instance.OnExitCar;
             @ExitCar.performed += instance.OnExitCar;
             @ExitCar.canceled += instance.OnExitCar;
@@ -584,15 +558,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(ICarActions instance)
         {
-            @Accelrate.started -= instance.OnAccelrate;
-            @Accelrate.performed -= instance.OnAccelrate;
-            @Accelrate.canceled -= instance.OnAccelrate;
+            @Steer.started -= instance.OnSteer;
+            @Steer.performed -= instance.OnSteer;
+            @Steer.canceled -= instance.OnSteer;
             @Break.started -= instance.OnBreak;
             @Break.performed -= instance.OnBreak;
             @Break.canceled -= instance.OnBreak;
-            @Turn.started -= instance.OnTurn;
-            @Turn.performed -= instance.OnTurn;
-            @Turn.canceled -= instance.OnTurn;
             @ExitCar.started -= instance.OnExitCar;
             @ExitCar.performed -= instance.OnExitCar;
             @ExitCar.canceled -= instance.OnExitCar;
@@ -635,9 +606,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     }
     public interface ICarActions
     {
-        void OnAccelrate(InputAction.CallbackContext context);
+        void OnSteer(InputAction.CallbackContext context);
         void OnBreak(InputAction.CallbackContext context);
-        void OnTurn(InputAction.CallbackContext context);
         void OnExitCar(InputAction.CallbackContext context);
     }
 }

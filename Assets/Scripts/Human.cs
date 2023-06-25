@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class Human : MonoBehaviour
@@ -11,22 +12,20 @@ public class Human : MonoBehaviour
     public GameObject DropPrefab;
     public Vector2Int DropCountRandomRange;
     public Vector2 DropRange;
+
+    public Transform DestiantionPos;
     
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start()	{
+        var agent = GetComponent<NavMeshAgent>();
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.SetDestination(new Vector3(DestiantionPos.position.x, DestiantionPos.position.y, transform.position.z));
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnDestroy()
-    {
-        DropBlood();
     }
 
     void DropBlood()
@@ -43,8 +42,18 @@ public class Human : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.GetComponentInParent<CarController>())
+        if (col.gameObject.GetComponentInParent<TopDownCarController>())
         {
+            DropBlood();
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.GetComponentInParent<TopDownCarController>())
+        {
+            DropBlood();
             Destroy(gameObject);
         }
     }

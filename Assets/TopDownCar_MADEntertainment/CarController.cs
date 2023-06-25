@@ -79,27 +79,27 @@ public class CarController : MonoBehaviour
 	{
 		if (possesed)
 		{
-			if (CarControlMode == controlMode.KeyBoard) 
-			{
-				if (InputController.Car.Accelrate.ReadValue<float>() > 0)
-					Accel (1);													//Accelerate in forward direction
-				else if (InputController.Car.Accelrate.ReadValue<float>() < 0)
-					Accel (-1);													//Accelerate in backward direction
-				else if (InputController.Car.Break.IsInProgress()) 
-				{
-					if (AccelFwd)
-						StopAccel (1, Breaks);									//Breaks while in forward direction
-					else if (AccelBwd)
-						StopAccel (-1, Breaks);									//Breaks while in backward direction
-				} 
-				else 
-				{
-					if (AccelFwd)
-						StopAccel (1, 0.1f);									//Applies breaks slowly if no key is pressed while in forward direction
-					else if (AccelBwd)
-						StopAccel (-1, 0.1f);									//Applies breaks slowly if no key is pressed while in backward direction
-				}
-			}
+			// if (CarControlMode == controlMode.KeyBoard) 
+			// {
+			// 	if (InputController.Car.Accelrate.ReadValue<float>() > 0)
+			// 		Accel (1);													//Accelerate in forward direction
+			// 	else if (InputController.Car.Accelrate.ReadValue<float>() < 0)
+			// 		Accel (-1);													//Accelerate in backward direction
+			// 	else if (InputController.Car.Break.IsInProgress()) 
+			// 	{
+			// 		if (AccelFwd)
+			// 			StopAccel (1, Breaks);									//Breaks while in forward direction
+			// 		else if (AccelBwd)
+			// 			StopAccel (-1, Breaks);									//Breaks while in backward direction
+			// 	} 
+			// 	else 
+			// 	{
+			// 		if (AccelFwd)
+			// 			StopAccel (1, 0.1f);									//Applies breaks slowly if no key is pressed while in forward direction
+			// 		else if (AccelBwd)
+			// 			StopAccel (-1, 0.1f);									//Applies breaks slowly if no key is pressed while in backward direction
+			// 	}
+			// }
 
 			if (CarControlMode == controlMode.Touch) 
 			{
@@ -268,11 +268,13 @@ public class CarController : MonoBehaviour
 
 	private bool IsSteeringLeft()
 	{
-		return InputController.Car.Turn.ReadValue<float>() < 0;
+		// return InputController.Car.Turn.ReadValue<float>() < 0;
+		return false;
 	}
 	
 	private bool IsSteeringRight()
 	{
-		return InputController.Car.Turn.ReadValue<float>() > 0;
+		// return InputController.Car.Turn.ReadValue<float>() > 0;
+		return false;
 	}
 }
