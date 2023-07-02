@@ -32,7 +32,7 @@ public class TopDownCarController : MonoBehaviour
     public Light2D BackLightL;
     public Light2D BackLightR;
     private InputActions InputController;
-    private bool possesed;
+    public bool possesed;
 
     //Awake is called when the script instance is being loaded.
     void Awake()
@@ -55,6 +55,7 @@ public class TopDownCarController : MonoBehaviour
         possesed = true;
         InputController.Car.Break.performed += BreakOnperformed;
         InputController.Car.Break.canceled += BreakOncanceled;
+        GetComponent<CarSfxHandler>().EnableAudio(true);
         animation.Play("StartEngine");
     }
     
@@ -77,6 +78,7 @@ public class TopDownCarController : MonoBehaviour
         InputController = null;
         possesed = false;
         animation.Play("StopEngine");
+        GetComponent<CarSfxHandler>().EnableAudio(false);
         GameManager.Instance.UpdateCameraZoom(0); 
     }
 

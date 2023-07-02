@@ -29,6 +29,7 @@ public class CarSfxHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        EnableAudio(false);
         //Example for recording, move this part to any setting script that your game might use. 
         //audioMixer.SetFloat("SFXVolume", 0.5f);
     }
@@ -38,6 +39,13 @@ public class CarSfxHandler : MonoBehaviour
     {
         UpdateEngineSFX();
         UpdateTiresScreechingSFX();
+    }
+
+    public void EnableAudio(bool isEnabled)
+    {
+        tiresScreeachingAudioSource.enabled = isEnabled;
+        engineAudioSource.enabled = isEnabled;
+        carHitAudioSource.enabled = isEnabled;
     }
 
     void UpdateEngineSFX()

@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField]
     private float RunModifer;
+
+    public float BloodTransfusionTotalTime;
+    private float BloodTransfusionTimer;
     
     private InputActions InputActions;
 
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
     private bool NearEnterableCar;
     private bool InCar;
     private bool InDonorPoint;
+    private bool isGivingBlood;
 
     private TopDownCarController nearCar;
     private TopDownCarController controlledCar;
@@ -40,6 +44,40 @@ public class PlayerController : MonoBehaviour
         InputActions.Character.EnterCar.performed += OnEnterCar;
         InputActions.Car.ExitCar.performed += OnExitCar;
         InputActions.Character.Interact.performed += OnInteract;
+        InputActions.Character.Interact.started += InteractOnstarted;
+        InputActions.Character.Interact.canceled += InteractOncanceled;
+    }
+
+    private void Update()
+    {
+        if (isGivingBlood)
+        {
+            BloodTransfusionTimer -= Time.deltaTime;
+            if (BloodTransfusionTimer <= 0.0f)
+            {
+                GameManager.Instance.TransferBlood(10);
+                BloodTransfusionTimer = BloodTransfusionTotalTime;
+            }
+        }
+    }
+
+    private void InteractOncanceled(InputAction.CallbackContext obj)
+    {
+        if (InDonorPoint)
+        {
+            isGivingBlood = false;
+            BloodTransfusionTimer = BloodTransfusionTotalTime;
+        }
+    }
+
+    private void InteractOnstarted(InputAction.CallbackContext obj)
+    {
+        if (InDonorPoint)
+        {
+            isGivingBlood = true;
+            GameManager.Instance.TransferBlood(10);
+            BloodTransfusionTimer = BloodTransfusionTotalTime;
+        }
     }
 
     private void OnExitCar(InputAction.CallbackContext obj)
@@ -52,11 +90,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext obj)
     {
-        if (InDonorPoint)
-        {
-            GameManager.Instance.TransferBlood(10);
-        }
-
         if (nearestUnlock != null)
         {
             if (nearestUnlock.HasEnoughBlood(GameManager.Instance.BloodOnCharacter))
@@ -185,6 +218,8 @@ public class PlayerController : MonoBehaviour
         else if (other.GetComponent<BloodDonor>())
         {
             InDonorPoint = false;
+            isGivingBlood = false;
+            BloodTransfusionTimer = BloodTransfusionTotalTime;
         }
         else if (other.GetComponent<Unlock>())
         {

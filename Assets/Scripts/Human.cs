@@ -88,9 +88,13 @@ public class Human : MonoBehaviour
     {
         if (col.gameObject.GetComponentInParent<TopDownCarController>())
         {
-            DropBlood();
-            GameManager.Instance.HumansKilled++;
-            Destroy(gameObject);
+            if (col.gameObject.GetComponentInParent<TopDownCarController>().possesed)
+            {
+                DropBlood();
+                GameManager.Instance.HumansKilled++;
+                Destroy(gameObject);
+            }
+            
         }
     }
 
@@ -98,9 +102,12 @@ public class Human : MonoBehaviour
     {
         if (col.gameObject.GetComponentInParent<TopDownCarController>())
         {
-            DropBlood();
-            GameManager.Instance.HumansKilled++;
-            Destroy(gameObject);
+            if (col.gameObject.GetComponentInParent<TopDownCarController>().possesed)
+            {
+                DropBlood();
+                GameManager.Instance.HumansKilled++;
+                Destroy(gameObject);
+            }
         }
     }
 }
