@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
     public CinemachineVirtualCamera characterVcam;
+    public UIGameSummaryPanel gameOverPanel;
     
     public int BloodOnCharacter;
     public int BloodGivenAway;
+    public int BloodSpent;
+    public int HumansKilled;
 
     public float NightTotalDuration;
     public Vector2 ZoomRange;
@@ -45,6 +49,18 @@ public class GameManager : MonoBehaviour
         BloodGivenAway += blood;
         BloodOnCharacter -= blood;
 
+        return true;
+    }
+    
+    public bool PayWithBlood(int blood)
+    {
+        if (BloodOnCharacter < blood)
+        {
+            return false;
+        }
+        
+        BloodOnCharacter -= blood;
+        BloodSpent += blood;
         return true;
     }
 
@@ -83,5 +99,16 @@ public class GameManager : MonoBehaviour
     {
         TimeLeft = 0;
         timeup = true;
+        
+        gameOverPanel.Show();
+    }
+
+    public void RestartGame()
+    {
+        BloodOnCharacter = 0;
+        BloodGivenAway = 0;
+        BloodSpent = 0;
+        HumansKilled = 0;
+        SceneManager.LoadScene(0);
     }
 }

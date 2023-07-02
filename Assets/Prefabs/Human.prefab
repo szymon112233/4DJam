@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3510235745926985046}
   - component: {fileID: 3510235745926985047}
   - component: {fileID: 3510235745926985051}
+  - component: {fileID: 673930155}
   m_Layer: 0
   m_Name: Human
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3510235745926985040}
-  m_LocalRotation: {x: -0, y: -0, z: -0.30641058, w: 0.95189947}
+  m_LocalRotation: {x: 0, y: 0, z: -0.30640978, w: 0.95189977}
   m_LocalPosition: {x: 7.83, y: -0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -138,4 +139,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DropPrefab: {fileID: 8952457605905386723, guid: b4e93d2304690b94e958a3c4ed6843f8, type: 3}
   DropCountRandomRange: {x: 2, y: 5}
-  DropRange: {x: 1, y: 1}
+  DropRange: {x: 0.8, y: 0.8}
+  MaxNestPointDistance: 10
+--- !u!195 &673930155
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3510235745926985040}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.26
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.36
+  m_BaseOffset: 0.18
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 3

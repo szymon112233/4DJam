@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private TopDownCarController nearCar;
     private TopDownCarController controlledCar;
+    private Unlock nearestUnlock;
     
     // Start is called before the first frame update
     void Awake()
@@ -54,6 +55,19 @@ public class PlayerController : MonoBehaviour
         if (InDonorPoint)
         {
             GameManager.Instance.TransferBlood(10);
+        }
+
+        if (nearestUnlock != null)
+        {
+            if (nearestUnlock.HasEnoughBlood(GameManager.Instance.BloodOnCharacter))
+            {
+                GameManager.Instance.PayWithBlood(nearestUnlock.Price);
+                nearestUnlock.UnlockColliders();
+            }
+            else
+            {
+                Debug.Log("Not enough blood!!!");
+            }
         }
     }
 
@@ -153,6 +167,10 @@ public class PlayerController : MonoBehaviour
         {
             InDonorPoint = true;
         }
+        else if (other.GetComponent<Unlock>())
+        {
+            nearestUnlock = other.GetComponent<Unlock>();
+        }
 
         
     }
@@ -167,6 +185,10 @@ public class PlayerController : MonoBehaviour
         else if (other.GetComponent<BloodDonor>())
         {
             InDonorPoint = false;
+        }
+        else if (other.GetComponent<Unlock>())
+        {
+            nearestUnlock = null;
         }
     }
 

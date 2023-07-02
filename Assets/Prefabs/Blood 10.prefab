@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8952457605905386726}
   - component: {fileID: 8952457605905386721}
   m_Layer: 6
-  m_Name: Pickable
+  m_Name: Blood 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70f8b8549c74670b2fa5e0265f916b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  renderer: {fileID: 8952457605905386726}
   Points: 10
+  PossibleSplats:
+  - {fileID: 21300000, guid: 3979cbe021d663b4283e81ecdb9cb500, type: 3}
+  - {fileID: 21300000, guid: a23b94514f3fe7e48a61f755a6f65b5a, type: 3}
+  - {fileID: 21300000, guid: 800cf4207a61a734d93e7525da0d3aa3, type: 3}
+  - {fileID: 21300000, guid: f7982e74ce82dbb4e94965ca9522fcdd, type: 3}
+  - {fileID: 21300000, guid: d3cb9b7002dd1064abb9e5b849a1a982, type: 3}
+  - {fileID: 21300000, guid: f05815bb443a6c54cbab8ec4e2a3c0ec, type: 3}
+  - {fileID: 21300000, guid: 0cd3a7d2895cd514e89293adea40b467, type: 3}
+  - {fileID: 21300000, guid: 7f86e49517d217b458cc47b375f619ec, type: 3}
+  - {fileID: 21300000, guid: eb3c44ef32b212a4098a1f0e90752c6c, type: 3}
+  - {fileID: 21300000, guid: a795ef40a0a1e0f45a51f0a243402463, type: 3}
+  - {fileID: 21300000, guid: fefc333cfa0c183439b3e9fe2766badf, type: 3}
+  - {fileID: 21300000, guid: 3e33cdeefdae22040a9e52c6221c2de0, type: 3}
+  - {fileID: 21300000, guid: 169e93b0aee13b041815fdd78649e6b5, type: 3}
+  - {fileID: 21300000, guid: 57b4deedf9517ce4d973610f8fae344b, type: 3}
+  - {fileID: 21300000, guid: 041cb7bc5819daf43a97c31b5ef0c0d9, type: 3}
+  - {fileID: 21300000, guid: a4e97d8fbebb60e4ea4e6d0575390c5d, type: 3}
+  - {fileID: 21300000, guid: 08003c0a607420648a2b03d967cc23bf, type: 3}
+  - {fileID: 21300000, guid: 52f19960c3c3c6e48809204b199c97f4, type: 3}
+  - {fileID: 21300000, guid: 797e8fc0406994f4fa96eaefe8f1da3b, type: 3}
+  - {fileID: 21300000, guid: 325f2fd3657dc9640bf766677a371fee, type: 3}
+  - {fileID: 21300000, guid: 92ee5eea48fec3d4b8fc6e5c37252edc, type: 3}
+  - {fileID: 21300000, guid: d289e83c60344714f865d9165897eabe, type: 3}
+  - {fileID: 21300000, guid: bddb066e65e566545b7194759b1a020e, type: 3}
+  - {fileID: 21300000, guid: ecb5f0c1b482e294ba276cd665134f26, type: 3}
+  - {fileID: 21300000, guid: bd8542d6d6b550e4180673edf2615ff8, type: 3}
+  - {fileID: 21300000, guid: 9dec6261c3d1b09449767b7ac6440dcc, type: 3}
+  - {fileID: 21300000, guid: f0facc4863dcb2a48b7734ec99d194fa, type: 3}
+  - {fileID: 21300000, guid: 3ba5b65c34f84f34a9728aaf16cd8e37, type: 3}
+  - {fileID: 21300000, guid: 46304b64087c8de40859fc92ae7637f1, type: 3}
+  - {fileID: 21300000, guid: 534bbf1674dd72f4c9028fe8f1e55fa0, type: 3}
+  - {fileID: 21300000, guid: 4a1a1c735b11f1b4597c2cd55549523a, type: 3}
+  - {fileID: 21300000, guid: 9672d1a28c6082e478a23c915664854c, type: 3}
+  - {fileID: 21300000, guid: 627d328a56507654db3ed97e0191abe9, type: 3}
+  - {fileID: 21300000, guid: 8362b39e9e2c49147bd985a3ac68ce42, type: 3}
+  - {fileID: 21300000, guid: 581439d62cf841e4ca33a4c6dee9a877, type: 3}
+  - {fileID: 21300000, guid: a535fe61ca6856846a158f3b834b9611, type: 3}
 --- !u!212 &8952457605905386726
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -85,11 +123,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 459785861
-  m_SortingLayer: 3
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 801771633, guid: 22d0ea83c6a68be4ebe87b5dcbc5d317, type: 3}
-  m_Color: {r: 0.6981132, g: 0.0032929946, b: 0.0032929946, a: 1}
+  m_SortingLayerID: -173329463
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: d289e83c60344714f865d9165897eabe, type: 3}
+  m_Color: {r: 0.20754719, g: 0.00489498, b: 0.00489498, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
