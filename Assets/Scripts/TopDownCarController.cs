@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,6 +13,9 @@ public class TopDownCarController : MonoBehaviour
     public float accelerationFactor = 30.0f;
     public float turnFactor = 3.5f;
     public float maxSpeed = 20;
+
+    public Action OnPosses;
+    public Action OnUnPosses;
 
     //Local variables
     float accelerationInput = 0;
@@ -57,6 +61,7 @@ public class TopDownCarController : MonoBehaviour
         InputController.Car.Break.canceled += BreakOncanceled;
         GetComponent<CarSfxHandler>().EnableAudio(true);
         animation.Play("StartEngine");
+        OnPosses.Invoke();
     }
     
     private void BreakOncanceled(InputAction.CallbackContext obj)
@@ -79,7 +84,8 @@ public class TopDownCarController : MonoBehaviour
         possesed = false;
         animation.Play("StopEngine");
         GetComponent<CarSfxHandler>().EnableAudio(false);
-        GameManager.Instance.UpdateCameraZoom(0); 
+        GameManager.Instance.UpdateCameraZoom(0);
+        OnUnPosses.Invoke();
     }
 
     //Frame-rate independent for physics calculations.
