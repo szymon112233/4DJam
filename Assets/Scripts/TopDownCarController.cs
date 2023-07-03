@@ -61,7 +61,7 @@ public class TopDownCarController : MonoBehaviour
         InputController.Car.Break.canceled += BreakOncanceled;
         GetComponent<CarSfxHandler>().EnableAudio(true);
         animation.Play("StartEngine");
-        OnPosses.Invoke();
+        OnPosses?.Invoke();
     }
     
     private void BreakOncanceled(InputAction.CallbackContext obj)
@@ -85,7 +85,7 @@ public class TopDownCarController : MonoBehaviour
         animation.Play("StopEngine");
         GetComponent<CarSfxHandler>().EnableAudio(false);
         GameManager.Instance.UpdateCameraZoom(0);
-        OnUnPosses.Invoke();
+        OnUnPosses?.Invoke();
     }
 
     //Frame-rate independent for physics calculations.
