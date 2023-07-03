@@ -155,7 +155,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.DefaultCompany.2DProject
+    Android: com.szymon112233.GrandTheftVampire
+    Standalone: com.szymon112233.GrandTheftVampire
   buildNumber:
     Standalone: 0
     iPhone: 0
