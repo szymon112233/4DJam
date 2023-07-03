@@ -3,7 +3,7 @@ name: Build & Test game
 on: [push, pull_request]
 
 jobs:
-  build:
+  tests:
     name: Run tests
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +46,7 @@ jobs:
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           allowDirtyBuild: true
-  build:
+  buildStandaloneWindows64:
     name: Build StandaloneWindows64
     runs-on: ubuntu-latest
     steps:
@@ -94,7 +94,7 @@ jobs:
         with:
           name: StandaloneWindows64
           path: build
-  build:
+  buildWebGL:
     name: Build WebGL
     runs-on: ubuntu-latest
     steps:
